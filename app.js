@@ -12,20 +12,8 @@ dotenv.config();
 
 connectDB();
 
-const User = require("./models/User");
-
-const userInput = {
-  username: "deevid45",
-  password: 123456978,
-  role: "admin",
-};
-
-const user = new User(userInput)
-user.save((err,document)=>{
-  if(err)
-    console.log(err)
-  console.log(document)
-})
+const userRouter = require('./routes/User')
+app.use('/user',userRouter)
 
 app.listen(5000, () => {
   console.log("express server started");
