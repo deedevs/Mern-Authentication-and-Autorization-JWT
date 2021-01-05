@@ -12,6 +12,21 @@ dotenv.config();
 
 connectDB();
 
+const User = require("./models/user");
+
+const userInput = {
+  username: "deevid45",
+  password: 123456978,
+  role: "admin",
+};
+
+const user = new User(userInput)
+user.save((err,document)=>{
+  if(err)
+    console.log(err)
+  console.log(document)
+})
+
 app.listen(5000, () => {
   console.log("express server started");
 });
